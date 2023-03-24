@@ -1,4 +1,4 @@
-package org.zutjmx.webapp.jaxrs;
+package org.zutjmx.webapp.jaxrs.controllers;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
