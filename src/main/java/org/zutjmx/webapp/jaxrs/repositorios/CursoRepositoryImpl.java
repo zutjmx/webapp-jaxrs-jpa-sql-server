@@ -1,9 +1,9 @@
-package org.zutjmx.webapp.jaxws.repositorios;
+package org.zutjmx.webapp.jaxrs.repositorios;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
-import org.zutjmx.webapp.jaxws.models.Curso;
+import org.zutjmx.webapp.jaxrs.models.Curso;
 
 import java.util.List;
 
@@ -22,7 +22,22 @@ public class CursoRepositoryImpl implements CursoRepository {
 
     @Override
     public Curso guardar(Curso curso) {
-        entityManager.persist(curso);
+        if(curso.getId() != null && curso.getId() > 0) {
+            entityManager.merge(curso);
+        } else {
+            entityManager.persist(curso);
+        }
         return curso;
+    }
+
+    @Override
+    public Curso porId(Long id) {
+        return entityManager.find(Curso.class, id);
+    }
+
+    @Override
+    public void eliminar(Long id) {
+        Curso curso = this.porId(id);
+        entityManager.remove(curso);
     }
 }

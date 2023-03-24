@@ -1,8 +1,9 @@
-package org.zutjmx.webapp.jaxws.models;
+package org.zutjmx.webapp.jaxrs.models;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @Entity
 @Table(name = "cursos")
 public class Curso {
