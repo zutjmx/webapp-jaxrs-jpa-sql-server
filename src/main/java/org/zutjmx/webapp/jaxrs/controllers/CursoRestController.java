@@ -13,7 +13,8 @@ import java.util.Optional;
 
 @RequestScoped
 @Path("/cursos")
-@Produces(MediaType.APPLICATION_XML)
+//@Produces(MediaType.APPLICATION_XML)
+@Produces(MediaType.APPLICATION_JSON)
 public class CursoRestController {
 
     @Inject
@@ -40,7 +41,8 @@ public class CursoRestController {
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_XML)
+    //@Consumes(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response crear(Curso curso) {
         try {
             Curso nuevoCurso = cursoService.guardar(curso);
@@ -53,7 +55,8 @@ public class CursoRestController {
 
     @PUT
     @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_XML)
+    //@Consumes(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response editar(@PathParam("id") Long id, Curso curso) {
         Optional<Curso> cursoOptional = cursoService.porId(id);
         if (cursoOptional.isPresent()) {
